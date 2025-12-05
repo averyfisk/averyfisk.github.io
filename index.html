@@ -1,117 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Avery Fisk Coaching</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Avery Fisk Coaching</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #0f0f0f;
-            color: #ffffff;
-            line-height: 1.5;
-        }
+<!-- PROFESSIONAL FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        /* Layout */
-        .section {
-            width: 100%;
-            padding: 80px 22px;
-            box-sizing: border-box;
-        }
+<style>
+  :root{
+    --bg-1:#000000;
+    --bg-2:#0a0a0a;
+    --muted:#cfcfcf;
+    --muted-2:#aaa;
+    --btn-bg:#111;
+    --btn-border:#2e2e2e;
+    --accent:#fff;
+  }
 
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding-top: 120px;
-        }
+  html,body{height:100%;margin:0;}
+  body{
+    font-family:'Inter Tight',sans-serif;
+    background: linear-gradient(to bottom, var(--bg-1), var(--bg-2));
+    color:#fff;
+    text-align:center;
+    padding:45px 22px 80px;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
 
-        .hero h1 {
-            font-size: 38px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
+  /* Fade-up animation */
+  .fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+  .fade-up.show{opacity:1;transform:translateY(0);}
 
-        .hero p {
-            font-size: 16px;
-            max-width: 420px;
-            margin: 0 auto 28px auto;
-            opacity: 0.85;
-        }
+  .profile-img{
+    width:150px;height:150px;object-fit:cover;border-radius:50%;
+    border:1px solid #1a1a1a;margin-bottom:28px;filter:contrast(112%);
+  }
 
-        .hero img {
-            width: 260px;
-            border-radius: 14px;
-            display: block;
-            margin: 40px auto 0 auto;
-        }
+  h1{
+    font-size:34px;margin:0 0 12px 0;letter-spacing:.6px;font-weight:700;
+  }
 
-        .cta-btn {
-            display: inline-block;
-            padding: 16px 32px;
-            background-color: #ffffff;
-            color: #000000;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 6px;
-            text-decoration: none;
-            margin-top: 10px;
-        }
+  .desc{
+    max-width:460px;margin:0 auto 50px auto;font-size:15px;line-height:1.7;color:var(--muted);font-weight:400;
+  }
 
-        .cta-secondary {
-            display: block;
-            font-size: 15px;
-            margin-top: 14px;
-            text-decoration: underline;
-            color: #fff;
-            opacity: 0.85;
-        }
+  .section-title{
+    margin-top:60px;margin-bottom:16px;font-size:16px;font-weight:700;color:#e4e4e4;
+    letter-spacing:1px;text-transform:uppercase;
+  }
 
-        /* About Me Section */
-        .about-section {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: left;
-            padding-top: 40px;
-        }
+  .link-btn{
+    display:block;background:var(--btn-bg);color:var(--accent);padding:15px;margin:14px auto;
+    width:85%;max-width:430px;border-radius:10px;border:1px solid var(--btn-border);
+    text-decoration:none;font-size:16px;font-weight:600;transition:all .25s;
+  }
+  .link-btn:hover{background:var(--accent);color:#000;border-color:var(--accent);transform:translateY(-2px);}
 
-        .about-section h2 {
-            font-size: 28px;
-            margin-bottom: 14px;
-            font-weight: 700;
-        }
+  /* Centered email area */
+  .email-box{margin-top:20px;max-width:420px;margin-left:auto;margin-right:auto;text-align:center;}
+  .email-box label{font-size:15px;color:var(--muted-2);font-weight:600;display:block;margin-bottom:12px;}
+  .email-input{width:100%;padding:14px;border-radius:8px;border:none;background:#1b1b1b;color:#fff;font-size:15px;margin-bottom:18px;text-align:center;}
+  .email-submit{width:100%;padding:14px;border-radius:8px;background:#fff;color:#000;font-weight:700;border:none;font-size:16px;cursor:pointer;transition:.3s;}
+  .email-submit:hover{background:#ccc;}
 
-        .about-section p {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-top: 0;
-        }
-    </style>
+  /* About text */
+  .about-text{max-width:520px;margin:18px auto 0 auto;color:var(--muted);font-size:15px;line-height:1.7;text-align:center;}
+
+  footer{
+    width:100%;text-align:center;margin-top:70px;padding:24px 0;font-size:13px;color:#767676;
+    border-top:1px solid #1a1a1a;letter-spacing:.4px;
+  }
+
+  /* Responsive tweaks */
+  @media (min-width:900px){
+    .desc{font-size:16px;}
+    h1{font-size:38px;}
+  }
+</style>
 </head>
-
 <body>
 
-    <!-- HERO SECTION -->
-    <div class="section hero">
-        <h1>I Turn High Standards into Real Outcomes</h1>
-        <p>
-            Precision coaching for individuals who want elite-level results delivered with intensity, clarity, and zero wasted time.
-        </p>
+  <!-- Profile -->
+  <img src="https://images.squarespace-cdn.com/content/v1/6932408d796db753ddcba68d/b6344938-7df6-4ec8-91a9-3d2287a23e63/584389590_18114555436604251_6154592210605558267_n.jpg?format=500w"
+       alt="Avery Fisk" class="profile-img fade-up" />
 
-        <a class="cta-btn" href="https://buy.stripe.com/14A9AT747feegp1cmK5sA02">Start Now</a>
-        <a class="cta-secondary" href="https://calendly.com/">Book a Call Instead</a>
+  <h1 class="fade-up">Avery Fisk Coaching</h1>
 
-        <img src="YOUR-IMAGE-HERE.jpg" alt="Avery Fisk">
-    </div>
+  <div class="desc fade-up">
+    High-performance fitness coaching for people who demand real results.
+    Build a physique that stands out, elevate your discipline, and follow a system engineered for fast, measurable transformation.
+  </div>
 
-    <!-- ABOUT SECTION -->
-    <div class="section about-section">
-        <h2>About Me</h2>
-        <p>
-            My name is Avery Fisk. Fitness has been the foundation of my life for as long as I can remember. What started as a personal mission to master discipline and transform my own physique evolved into a commitment to helping others unlock the same potential.
-        </p>
-    </div>
+  <!-- START HERE -->
+  <div class="section-title fade-up">Start Here</div>
+
+  <a class="link-btn fade-up" href="https://calendly.com/averyfisk" target="_blank" rel="noopener">Book a Consultation Call</a>
+
+  <a class="link-btn fade-up" href="AveryFisk-FreeWorkout.pdf" target="_blank" rel="noopener">Download Free Workout Guide</a>
+
+  <!-- EMAIL LIST IN THE MIDDLE -->
+  <div class="section-title fade-up">Email List</div>
+
+  <div class="email-box fade-up">
+    <form name="emailCapture" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="emailCapture" />
+      <label for="email">Join my email list for weekly training strategy and high-performance insights:</label>
+      <input class="email-input" id="email" name="email" type="email" placeholder="Enter your email..." required />
+      <button class="email-submit" type="submit">Join</button>
+    </form>
+  </div>
+
+  <!-- MORE RESOURCES -->
+  <div class="section-title fade-up">More Resources</div>
+
+  <a class="link-btn fade-up" href="https://book.stripe.com/14A9AT747feegp1cmK5sA02" target="_blank" rel="noopener">Apply for 1:1 Coaching</a>
+
+  <a class="link-btn fade-up" href="https://instagram.com/averyfisk" target="_blank" rel="noopener">Instagram</a>
+
+  <a class="link-btn fade-up" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank" rel="noopener">Get My Recommendation</a>
+
+  <!-- ABOUT ME (minimal, high-impact, dash-free) -->
+  <div class="section-title fade-up">About Me</div>
+  <div class="about-text fade-up">
+    My name is Avery Fisk. Fitness has been the foundation of my life for as long as I can remember. What started as a personal mission to master discipline and transform my own physique evolved into a commitment to helping others unlock the same potential.
+    <br><br>
+    I coach with intention, precision, and a standard that demands real follow-through because the results you want require more than effort. They require direction.
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    © Avery Fisk Coaching. All Rights Reserved.
+  </footer>
+
+<script>
+  // Intersection observer to trigger fade-up (preserve previous behavior)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
