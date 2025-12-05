@@ -18,14 +18,12 @@
         padding: 40px 20px 70px 20px; 
     }
 
-    /* ANIMATION BASE STATE */
     .fade-up {
         opacity: 0;
         transform: translateY(25px);
         transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    /* WHEN ELEMENT ENTERS VIEW */
     .fade-up.show {
         opacity: 1;
         transform: translateY(0);
@@ -130,7 +128,6 @@
         background: #ccc; 
     }
 
-    /* small inline status */
     #formMessage {
         margin-top: 10px;
         color: #ccc;
@@ -143,7 +140,6 @@
 
 <body>
 
-<!-- Animation wrappers -->
 <img src="https://images.squarespace-cdn.com/content/v1/6932408d796db753ddcba68d/b6344938-7df6-4ec8-91a9-3d2287a23e63/584389590_18114555436604251_6154592210605558267_n.jpg?format=500w" 
      class="profile-img fade-up"/>
 
@@ -164,12 +160,13 @@
     Not sure where to start? Get my personal recommendation based on your goals.
 </div>
 
-<a class="link-btn fade-up" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
+<a class="link-btn fade-up" 
+   href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" 
+   target="_blank">
     Get My Recommendation
 </a>
 
 <div class="email-box fade-up">
-    <!-- PRESERVED HIDDEN FIELDS FOR COMPATIBILITY (keeps original intent) -->
     <form id="emailForm" name="emailForm" netlify netlify-honeypot="bot-field" data-netlify="true">
         <input type="hidden" name="form-name" value="emailForm">
         <input type="hidden" name="bot-field" id="bot-field">
@@ -179,12 +176,10 @@
 
         <button class="email-submit" type="submit">Join</button>
 
-        <!-- inline status message (small, unobtrusive) -->
         <div id="formMessage"></div>
     </form>
 </div>
 
-<!-- SMOOTH SCROLL + OBSERVER SCRIPT -->
 <script>
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -197,19 +192,7 @@
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
-<!-- Netlify + MailerLite integration script -->
 <script>
-/*
-  Behavior:
-  - Submits the Netlify form (so Netlify Forms records the submission)
-  - Calls your Netlify serverless function '/.netlify/functions/subscription'
-    which performs the secure MailerLite API call (server-side).
-  - Shows a brief success or error message in the small inline status area.
-  Requirements:
-  - Deploy a Netlify function at /.netlify/functions/subscription that reads
-    event.body.email and posts to MailerLite using MAILERLITE_API_KEY (env var).
-*/
-
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('emailForm');
     const emailInput = document.getElementById('email');
@@ -225,39 +208,26 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // basic validation
         const email = emailInput.value && emailInput.value.trim();
         if (!email) {
             showMessage('Enter a valid email.', '#ff6b6b');
             return;
         }
 
-        // prevent bot-field being filled
-        if (botField && botField.value) {
-            // silently ignore bots
-            return;
-        }
+        if (botField && botField.value) return;
 
-        // show immediate UI feedback
         showMessage('Submitting...', '#aaaaaa');
 
         try {
-            // 1) Let Netlify record the form (fire-and-forget)
-            // Build form data identical to a regular POST
             const formData = new FormData();
             formData.append('form-name', 'emailForm');
             formData.append('email', email);
 
-            // Send to Netlify (so it's visible in Netlify Forms)
             fetch('/', {
                 method: 'POST',
                 body: formData
-            }).catch(err => {
-                // ignore Netlify errors client-side — main work is serverless function
-                console.warn('Netlify form submit failed (client)', err);
-            });
+            }).catch(() => {});
 
-            // 2) Call the Netlify serverless function (server does MailerLite call)
             const resp = await fetch('/.netlify/functions/subscription', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -265,18 +235,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (!resp.ok) {
-                const text = await resp.text();
-                console.error('Server subscription error', resp.status, text);
                 showMessage('Subscription failed. Try again later.', '#ff6b6b');
                 return;
             }
 
-            // success
-            showMessage('You’re in — check your inbox for your guide.', '#7CFC00');
+            showMessage('You’re in — check your inbox.', '#7CFC00');
             emailInput.value = '';
 
         } catch (err) {
-            console.error(err);
             showMessage('Network error — try again.', '#ff6b6b');
         }
     });
