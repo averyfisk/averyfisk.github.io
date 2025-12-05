@@ -1,129 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Avery Fisk Coaching</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Avery Fisk Coaching</title>
 
-    <!-- Premium Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- INTER FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Inter", sans-serif;
-            background: #000;
-            color: #fff;
-            scroll-behavior: smooth;
-        }
+<style>
+    body { 
+        margin: 0; 
+        font-family: 'Inter', sans-serif; 
+        background: #000; 
+        color: #fff; 
+        text-align: center; 
+        padding: 40px 20px 70px 20px; 
+    }
 
-        header {
-            padding: 40px 20px 20px 20px;
-            text-align: center;
-        }
+    .fade-up {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 2px solid #444;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto;
-        }
+    .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-        .headline {
-            margin-top: 25px;
-            font-size: 32px;
-            font-weight: 700;
-        }
+    .profile-img { 
+        width: 150px; 
+        height: 150px; 
+        object-fit: cover; 
+        border-radius: 100%; 
+        border: 2px solid #444; 
+        margin-bottom: 28px; 
+    }
 
-        .subtext {
-            max-width: 600px;
-            margin: 15px auto 0;
-            line-height: 1.6;
-            font-size: 17px;
-            font-weight: 400;
-        }
+    h1 { 
+        font-size: 26px; 
+        margin-bottom: 12px; 
+        letter-spacing: 1px; 
+        font-weight: 700; 
+    }
 
-        .section {
-            margin: 60px auto;
-            text-align: center;
-            padding: 0 20px;
-        }
+    .desc { 
+        max-width: 420px; 
+        margin: 0 auto 40px auto; 
+        font-size: 15px; 
+        line-height: 1.55; 
+        color: #ccc; 
+        font-weight: 400; 
+    }
 
-        .cta-button {
-            margin-top: 30px;
-            padding: 16px 36px;
-            font-size: 18px;
-            font-weight: 600;
-            background: #0f0f0f;
-            border: 1px solid #444;
-            color: white;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
+    .link-btn { 
+        display: block; 
+        background: #111; 
+        color: #fff; 
+        padding: 16px; 
+        margin: 18px auto; 
+        width: 85%; 
+        max-width: 430px; 
+        border-radius: 10px; 
+        border: 1px solid #333; 
+        text-decoration: none; 
+        font-size: 17px; 
+        font-weight: 600; 
+        transition: 0.25s; 
+    }
 
-        .cta-button:hover {
-            background: #1a1a1a;
-            border-color: #666;
-        }
+    .link-btn:hover { 
+        background: #fff; 
+        color: #000; 
+        border-color: #fff; 
+    }
 
-        .email-box {
-            margin-top: 40px;
-        }
+    .cta2 { 
+        margin: 55px auto 18px auto; 
+        max-width: 420px; 
+        font-size: 16px; 
+        color: #e0e0e0; 
+        line-height: 1.5; 
+        font-weight: 600; 
+    }
 
-        input[type="email"] {
-            padding: 14px 18px;
-            width: 260px;
-            max-width: 80%;
-            border-radius: 4px;
-            border: 1px solid #333;
-            background: #111;
-            color: #fff;
-            font-size: 16px;
-        }
+    .email-box { 
+        margin-top: 45px; 
+        max-width: 420px; 
+        margin-left: auto; 
+        margin-right: auto; 
+        text-align: left; 
+    }
 
-        #status-message {
-            margin-top: 14px;
-            font-size: 15px;
-            color: #888;
-        }
-    </style>
+    .email-box label { 
+        font-size: 15px; 
+        color: #aaa; 
+        font-weight: 600; 
+    }
+
+    .email-input { 
+        width: 100%; 
+        padding: 14px; 
+        margin-top: 10px; 
+        margin-bottom: 18px; 
+        border-radius: 8px; 
+        border: none; 
+        background: #222; 
+        color: #fff; 
+        font-size: 15px; 
+    }
+
+    .email-submit { 
+        width: 100%; 
+        padding: 14px; 
+        border-radius: 8px; 
+        background: #fff; 
+        color: #000; 
+        font-weight: 700; 
+        border: none; 
+        font-size: 16px; 
+        cursor: pointer; 
+        transition: .3s; 
+    }
+
+    .email-submit:hover { 
+        background: #ccc; 
+    }
+
+    /* Success message */
+    #successMessage {
+        display: none;
+        margin-top: 20px;
+        font-size: 15px;
+        color: #4CAF50;
+        font-weight: 600;
+        text-align: center;
+    }
+</style>
 </head>
 
 <body>
 
-<header>
-    <img src="profile.jpg" alt="Profile" class="profile-img">
+<img src="https://images.squarespace-cdn.com/content/v1/6932408d796db753ddcba68d/b6344938-7df6-4ec8-91a9-3d2287a23e63/584389590_18114555436604251_6154592210605558267_n.jpg?format=500w" 
+     class="profile-img fade-up"/>
 
-    <h1 class="headline">I turn high standards into real outcomes.</h1>
+<h1 class="fade-up">Avery Fisk Coaching</h1>
 
-    <p class="subtext">
-        High-performance fitness coaching engineered for people who expect more from themselves. Build a physique that commands presence, elevate discipline, and follow a system designed for fast, measurable results with precision.
-    </p>
-
-    <button onclick="document.getElementById('learn-more').scrollIntoView()" class="cta-button">
-        Learn More
-    </button>
-</header>
-
-<div id="learn-more" class="section">
-
-    <h2 style="font-size: 26px; font-weight: 600;">Join the Email List</h2>
-    <p style="max-width: 520px; margin: 10px auto; line-height: 1.6;">
-        Get exclusive insights, training strategy, and performance guidance designed to push you forward.
-    </p>
-
-    <form id="email-form" class="email-box">
-        <input id="email-input" type="email" placeholder="Enter your email" required>
-        <button class="cta-button" style="margin-top: 20px;">Join</button>
-        <div id="status-message"></div>
-    </form>
+<div class="desc fade-up">
+    High-performance fitness coaching engineered for people who expect more from themselves. 
+    Build a physique that commands presence, develop discipline that elevates every part of your life, 
+    and follow a system designed for real, measurable transformation delivered with speed and intention.
 </div>
 
-<!-- MailerLite Script -->
-<script src="mailerlite.js"></script>
+<a class="link-btn fade-up" href="AveryFisk-FreeWorkout.pdf" target="_blank">Download Free Workout Guide</a>
+<a class="link-btn fade-up" href="https://book.stripe.com/14A9AT747feegp1cmK5sA02" target="_blank">Apply for 1:1 Coaching</a>
+<a class="link-btn fade-up" href="https://calendly.com/averyfisk" target="_blank">Book a Consultation Call</a>
+<a class="link-btn fade-up" href="https://instagram.com/averyfisk" target="_blank">Instagram</a>
+
+<div class="cta2 fade-up">
+    Not sure where to start? Get my personal recommendation based on your goals.
+</div>
+
+<a class="link-btn fade-up" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
+    Get My Recommendation
+</a>
+
+<div class="email-box fade-up">
+    <label for="email">Join my email list for training strategies, physique tips, and exclusive coaching offers:</label>
+
+    <input class="email-input" type="email" id="emailInput" placeholder="Enter your email..." required>
+
+    <button class="email-submit" onclick="subscribe()">Join</button>
+
+    <div id="successMessage">You're in. Check your email.</div>
+</div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    async function subscribe() {
+        const email = document.getElementById('emailInput').value.trim();
+        if (!email) return;
+
+        const response = await fetch('/.netlify/functions/subscription', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        });
+
+        if (response.ok) {
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('emailInput').value = '';
+        }
+    }
+</script>
 
 </body>
 </html>
