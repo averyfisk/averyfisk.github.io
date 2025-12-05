@@ -1,156 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Avery Fisk Coaching</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Avery Fisk Coaching</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #111;
-            color: #f5f5f5;
-            font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-        }
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 48px 20px;
-        }
+<style>
+    body { 
+        margin: 0; 
+        font-family: 'Inter Tight', sans-serif; 
+        background: #000; 
+        color: #fff; 
+        text-align: center; 
+        padding: 45px 22px 80px; 
+    }
 
-        .header {
-            text-align: center;
-            padding: 60px 20px 40px;
-        }
+    /* Fade-Up Animation */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
 
-        .header img {
-            width: 210px;
-            border-radius: 6px;
-            border: 1px solid #333;
-            display: block;
-            margin: 0 auto 28px;
-        }
+    .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-        .header h1 {
-            margin: 0 0 12px;
-            font-size: 42px;
-            font-weight: 600;
-        }
+    .profile-img { 
+        width: 150px; 
+        height: 150px; 
+        object-fit: cover; 
+        border-radius: 50%; 
+        border: 1px solid #1a1a1a; 
+        margin-bottom: 28px; 
+        filter: contrast(112%); 
+    }
 
-        .header p {
-            font-size: 16px;
-            max-width: 620px;
-            margin: 0 auto;
-            color: #cfcfcf;
-        }
+    h1 { 
+        font-size: 28px; 
+        margin-bottom: 12px; 
+        letter-spacing: 0.5px; 
+        font-weight: 700; 
+    }
 
-        .section {
-            margin: 60px 0;
-        }
+    .desc { 
+        max-width: 460px; 
+        margin: 0 auto 50px auto; 
+        font-size: 15px; 
+        line-height: 1.7; 
+        color: #cfcfcf; 
+        font-weight: 400; 
+    }
 
-        .section h2 {
-            font-size: 28px;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
+    .section-title {
+        margin-top: 60px;
+        margin-bottom: 16px;
+        font-size: 16px;
+        font-weight: 700;
+        color: #e4e4e4;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
 
-        .btn {
-            display: inline-block;
-            margin: 12px 8px;
-            padding: 16px 30px;
-            background-color: #e3e3e3;
-            color: #000;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            transition: 0.2s ease;
-        }
+    .link-btn { 
+        display: block; 
+        background: #111; 
+        color: #fff; 
+        padding: 15px; 
+        margin: 14px auto; 
+        width: 85%; 
+        max-width: 430px; 
+        border-radius: 10px; 
+        border: 1px solid #2e2e2e; 
+        text-decoration: none; 
+        font-size: 16px; 
+        font-weight: 600; 
+        transition: 0.25s; 
+    }
 
-        .btn:hover {
-            background-color: #fff;
-        }
+    .link-btn:hover { 
+        background: #fff; 
+        color: #000; 
+        border-color: #fff; 
+        transform: translateY(-2px);
+    }
 
-        .email-box {
-            margin-top: 28px;
-            max-width: 420px;
-        }
+    .email-box { 
+        margin-top: 65px; 
+        max-width: 420px; 
+        margin-left: auto; 
+        margin-right: auto; 
+        text-align: left; 
+    }
 
-        input[type="email"] {
-            width: 100%;
-            padding: 14px;
-            border-radius: 6px;
-            border: 1px solid #333;
-            background-color: #1a1a1a;
-            color: #fff;
-            margin-bottom: 12px;
-        }
+    .email-box label { 
+        font-size: 15px; 
+        color: #aaa; 
+        font-weight: 600; 
+    }
 
-        input[type="submit"] {
-            width: 100%;
-            padding: 16px;
-            background-color: #e3e3e3;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+    .email-input { 
+        width: 100%; 
+        padding: 14px; 
+        margin-top: 10px; 
+        margin-bottom: 18px; 
+        border-radius: 8px; 
+        border: none; 
+        background: #1b1b1b; 
+        color: #fff; 
+        font-size: 15px; 
+    }
 
-        input[type="submit"]:hover {
-            background-color: #fff;
-        }
+    .email-submit { 
+        width: 100%; 
+        padding: 14px; 
+        border-radius: 8px; 
+        background: #fff; 
+        color: #000; 
+        font-weight: 700; 
+        border: none; 
+        font-size: 16px; 
+        cursor: pointer; 
+        transition: .3s; 
+    }
 
-        footer {
-            padding: 50px 0;
-            text-align: center;
-            font-size: 14px;
-            color: #777;
-        }
-
-    </style>
+    .email-submit:hover { 
+        background: #ccc; 
+    }
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <div class="header">
-        <!-- Replace "your-image.jpg" with the actual filename in your repo -->
-        <img src="your-image.jpg" alt="Avery Fisk">
-        <h1>Avery Fisk Coaching</h1>
-        <p>I help driven individuals operate at a higher standard and achieve fast, high-quality results through disciplined execution.</p>
-    </div>
+<img src="https://images.squarespace-cdn.com/content/v1/6932408d796db753ddcba68d/b6344938-7df6-4ec8-91a9-3d2287a23e63/584389590_18114555436604251_6154592210605558267_n.jpg?format=500w" 
+     class="profile-img fade-up"/>
 
-    <div class="container">
+<h1 class="fade-up">Avery Fisk Coaching</h1>
 
-        <!-- START HERE -->
-        <div class="section">
-            <h2>Start Here</h2>
+<div class="desc fade-up">
+    High-performance fitness coaching for people who demand real results.  
+    Build a physique that stands out, elevate your discipline, and follow a system engineered for fast, measurable transformation.
+</div>
 
-            <a href="YOUR-CONSULTATION-LINK" class="btn">Book a Consultation Call</a>
-            <a href="YOUR-FREE-GUIDE.pdf" class="btn">Download Free Workout Guide</a>
+<!-- START HERE -->
+<div class="section-title fade-up">Start Here</div>
 
-            <div class="email-box">
-                <form action="/.netlify/functions/subscribe" method="POST">
-                    <input type="email" name="email" placeholder="Join the email list" required>
-                    <input type="submit" value="Join the List">
-                </form>
-            </div>
-        </div>
+<a class="link-btn fade-up" href="https://calendly.com/averyfisk" target="_blank">
+    Book a Consultation Call
+</a>
 
-        <!-- MORE RESOURCES -->
-        <div class="section">
-            <h2>More Resources</h2>
-            <a href="YOUR-1ON1-APPLICATION" class="btn">Apply for 1:1 Coaching</a>
-        </div>
+<a class="link-btn fade-up" href="AveryFisk-FreeWorkout.pdf" target="_blank">
+    Download Free Workout Guide
+</a>
 
-    </div>
+<!-- MORE RESOURCES -->
+<div class="section-title fade-up">More Resources</div>
 
-    <footer>
-        © 2025 Avery Fisk Coaching. All Rights Reserved.
-    </footer>
+<a class="link-btn fade-up" href="https://book.stripe.com/14A9AT747feegp1cmK5sA02" target="_blank">
+    Apply for 1:1 Coaching
+</a>
+
+<a class="link-btn fade-up" href="https://instagram.com/averyfisk" target="_blank">
+    Instagram
+</a>
+
+<a class="link-btn fade-up" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
+    Get My Recommendation
+</a>
+
+<!-- EMAIL LIST -->
+<div class="email-box fade-up">
+    <form name="emailCapture" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="emailCapture">
+
+        <label for="email">Join my email list for weekly training strategy and high-performance insights:</label>
+        <input class="email-input" type="email" name="email" id="email" placeholder="Enter your email..." required>
+
+        <button class="email-submit" type="submit">Join</button>
+    </form>
+</div>
+
+<!-- Observer Script -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
