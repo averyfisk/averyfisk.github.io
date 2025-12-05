@@ -5,14 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Avery Fisk Coaching</title>
 
+<!-- INTER FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
     body { 
         margin: 0; 
-        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; 
+        font-family: 'Inter', sans-serif; 
         background: #000; 
         color: #fff; 
         text-align: center; 
-        padding: 40px 20px; 
+        padding: 40px 20px 70px 20px; 
+    }
+
+    /* ANIMATION BASE STATE */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    /* WHEN ELEMENT ENTERS VIEW */
+    .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .profile-img { 
@@ -20,24 +36,24 @@
         height: 150px; 
         object-fit: cover; 
         border-radius: 100%; 
-        border: 2px solid #222; 
-        margin-bottom: 25px; 
+        border: 2px solid #444; 
+        margin-bottom: 28px; 
     }
 
     h1 { 
         font-size: 26px; 
-        margin-bottom: 10px; 
+        margin-bottom: 12px; 
         letter-spacing: 1px; 
         font-weight: 700; 
     }
 
     .desc { 
         max-width: 420px; 
-        margin: 0 auto 35px auto; 
+        margin: 0 auto 40px auto; 
         font-size: 15px; 
         line-height: 1.55; 
         color: #ccc; 
-        font-weight: 500; 
+        font-weight: 400; 
     }
 
     .link-btn { 
@@ -45,7 +61,7 @@
         background: #111; 
         color: #fff; 
         padding: 16px; 
-        margin: 15px auto; 
+        margin: 18px auto; 
         width: 85%; 
         max-width: 430px; 
         border-radius: 10px; 
@@ -54,7 +70,6 @@
         font-size: 17px; 
         font-weight: 600; 
         transition: 0.25s; 
-        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     }
 
     .link-btn:hover { 
@@ -64,7 +79,7 @@
     }
 
     .cta2 { 
-        margin: 40px auto 10px auto; 
+        margin: 55px auto 18px auto; 
         max-width: 420px; 
         font-size: 16px; 
         color: #e0e0e0; 
@@ -89,14 +104,13 @@
     .email-input { 
         width: 100%; 
         padding: 14px; 
-        margin-top: 8px; 
-        margin-bottom: 15px; 
+        margin-top: 10px; 
+        margin-bottom: 18px; 
         border-radius: 8px; 
         border: none; 
         background: #222; 
         color: #fff; 
         font-size: 15px; 
-        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     }
 
     .email-submit { 
@@ -110,7 +124,6 @@
         font-size: 16px; 
         cursor: pointer; 
         transition: .3s; 
-        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     }
 
     .email-submit:hover { 
@@ -121,38 +134,32 @@
 
 <body>
 
-<img src="https://images.squarespace-cdn.com/content/v1/6932408d796db753ddcba68d/b6344938-7df6-4ec8-91a9-3d2287a23e63/584389590_18114555436604251_6154592210605558267_n.jpg?format=500w" class="profile-img"/>
+<!-- Animation wrappers -->
+<img src="https://images.squarespace-cdn.com/content/v1/6932408d796db753ddcba68d/b6344938-7df6-4ec8-91a9-3d2287a23e63/584389590_18114555436604251_6154592210605558267_n.jpg?format=500w" 
+     class="profile-img fade-up"/>
 
-<h1>Avery Fisk Coaching</h1>
+<h1 class="fade-up">Avery Fisk Coaching</h1>
 
-<div class="desc">
-    High-performance fitness coaching engineered for people who expect more from themselves.  
-    Build a physique that commands presence, instill discipline that elevates every part of life,  
-    and follow a system designed for real, measurable transformation—fast and with intention.
+<div class="desc fade-up">
+    High-performance fitness coaching engineered for people who expect more from themselves. 
+    Build a physique that commands presence, develop discipline that elevates every part of your life, 
+    and follow a system designed for real, measurable transformation delivered with speed and intention.
 </div>
 
-<!-- FREE WORKOUT PDF -->
-<a class="link-btn" href="AveryFisk-FreeWorkout.pdf" target="_blank">Download Free Workout Guide</a>
+<a class="link-btn fade-up" href="AveryFisk-FreeWorkout.pdf" target="_blank">Download Free Workout Guide</a>
+<a class="link-btn fade-up" href="https://book.stripe.com/14A9AT747feegp1cmK5sA02" target="_blank">Apply for 1:1 Coaching</a>
+<a class="link-btn fade-up" href="https://calendly.com/averyfisk" target="_blank">Book a Consultation Call</a>
+<a class="link-btn fade-up" href="https://instagram.com/averyfisk" target="_blank">Instagram</a>
 
-<!-- UPDATED STRIPE LINK -->
-<a class="link-btn" href="https://book.stripe.com/14A9AT747feegp1cmK5sA02" target="_blank">Apply for 1:1 Coaching</a>
+<div class="cta2 fade-up">
+    Not sure where to start? Get my personal recommendation based on your goals.
+</div>
 
-<!-- CONSULTATION CALL -->
-<a class="link-btn" href="https://calendly.com/averyfisk" target="_blank">Book a Consultation Call</a>
-
-<!-- INSTAGRAM -->
-<a class="link-btn" href="https://instagram.com/averyfisk" target="_blank">Instagram</a>
-
-<!-- SECOND CTA -->
-<div class="cta2">Not sure where to start? Get my personal recommendation based on your goals.</div>
-
-<!-- GOOGLE FORM -->
-<a class="link-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
+<a class="link-btn fade-up" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
     Get My Recommendation
 </a>
 
-<!-- EMAIL FORM -->
-<div class="email-box">
+<div class="email-box fade-up">
     <form action="https://formsubmit.co/averyjfisk@gmail.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="New Lead from Linktree">
@@ -164,6 +171,19 @@
         <button class="email-submit" type="submit">Join</button>
     </form>
 </div>
+
+<!-- SMOOTH SCROLL + OBSERVER SCRIPT -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
