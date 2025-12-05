@@ -5,14 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Avery Fisk Coaching</title>
 
-<!-- PROFESSIONAL FONT -->
+<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
     body { 
         margin: 0; 
         font-family: 'Inter Tight', sans-serif; 
-        /* Sharper, professional gradient */
         background: linear-gradient(160deg, #000000 0%, #0a0a0a 40%, #111 100%);
         color: #fff; 
         text-align: center; 
@@ -24,7 +23,6 @@
         transform: translateY(25px);
         transition: opacity 0.7s ease, transform 0.7s ease;
     }
-
     .fade-up.show {
         opacity: 1;
         transform: translateY(0);
@@ -35,22 +33,21 @@
         height: 150px; 
         object-fit: cover; 
         border-radius: 100%; 
-        /* thinner, darker, more premium border */
         border: 1.2px solid #222; 
         margin-bottom: 28px; 
     }
 
     h1 { 
-        font-size: 26px; 
+        font-size: 28px; 
         margin-bottom: 12px; 
-        letter-spacing: .6px; 
         font-weight: 700; 
+        letter-spacing: .6px;
     }
 
     .desc { 
-        max-width: 420px; 
-        margin: 0 auto 40px auto; 
-        font-size: 15px; 
+        max-width: 430px; 
+        margin: 0 auto 35px auto; 
+        font-size: 16px; 
         line-height: 1.55; 
         color: #d0d0d0; 
         font-weight: 400; 
@@ -71,24 +68,23 @@
         font-weight: 600; 
         transition: 0.25s; 
     }
-
     .link-btn:hover { 
         background: #ffffff; 
         color: #000000; 
         border-color: #fff; 
     }
 
-    .cta2 { 
-        margin: 55px auto 18px auto; 
-        max-width: 420px; 
-        font-size: 16px; 
-        color: #e0e0e0; 
-        line-height: 1.5; 
-        font-weight: 600; 
+    .section-label {
+        margin-top: 55px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #888;
+        letter-spacing: .5px;
+        text-transform: uppercase;
     }
 
     .email-box { 
-        margin-top: 45px; 
+        margin-top: 25px; 
         max-width: 420px; 
         margin-left: auto; 
         margin-right: auto; 
@@ -148,22 +144,18 @@
 <h1 class="fade-up">Avery Fisk Coaching</h1>
 
 <div class="desc fade-up">
-    High-performance fitness coaching engineered for people who expect more from themselves. 
-    Build a physique that commands presence, develop discipline that elevates every part of your life, 
-    and follow a system designed for real, measurable transformation delivered with speed and intention.
+    High-performance coaching for people who refuse to be average.  
+    Precision programming. Fast results. A standard of excellence most never reach.
 </div>
 
-<a class="link-btn fade-up" href="AveryFisk-FreeWorkout.pdf" target="_blank">Download Free Workout Guide</a>
-<a class="link-btn fade-up" href="https://book.stripe.com/14A9AT747feegp1cmK5sA02" target="_blank">Apply for 1:1 Coaching</a>
-<a class="link-btn fade-up" href="https://calendly.com/averyfisk" target="_blank">Book a Consultation Call</a>
-<a class="link-btn fade-up" href="https://instagram.com/averyfisk" target="_blank">Instagram</a>
+<div class="section-label fade-up">Start Here</div>
 
-<div class="cta2 fade-up">
-    Not sure where to start? Get my personal recommendation based on your goals.
-</div>
+<a class="link-btn fade-up" href="https://book.stripe.com/14A9AT747feegp1cmK5sA02" target="_blank">
+    Apply for 1:1 Coaching
+</a>
 
-<a class="link-btn fade-up" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
-    Get My Recommendation
+<a class="link-btn fade-up" href="AveryFisk-FreeWorkout.pdf" target="_blank">
+    Download Free Workout Guide
 </a>
 
 <div class="email-box fade-up">
@@ -171,14 +163,28 @@
         <input type="hidden" name="form-name" value="emailForm">
         <input type="hidden" name="bot-field" id="bot-field">
 
-        <label for="email">Join my email list for training strategies, physique tips, and exclusive coaching offers:</label>
+        <label for="email">Join the insider list for higher-level training insights and early access to coaching:</label>
         <input class="email-input" type="email" name="email" id="email" placeholder="Enter your email..." required>
 
-        <button class="email-submit" type="submit">Join</button>
+        <button class="email-submit" type="submit">Join the List</button>
 
         <div id="formMessage"></div>
     </form>
 </div>
+
+<div class="section-label fade-up">More Resources</div>
+
+<a class="link-btn fade-up" href="https://calendly.com/averyfisk" target="_blank">
+    Book a Consultation Call
+</a>
+
+<a class="link-btn fade-up" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
+    Get a Personalized Plan
+</a>
+
+<a class="link-btn fade-up" href="https://instagram.com/averyfisk" target="_blank">
+    Instagram
+</a>
 
 <script>
     const observer = new IntersectionObserver((entries) => {
@@ -192,7 +198,7 @@
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
-<!-- Netlify + MailerLite -->
+<!-- Netlify/MailerLite -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('emailForm');
