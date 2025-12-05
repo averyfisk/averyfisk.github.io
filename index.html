@@ -6,42 +6,21 @@
     <title>Avery Fisk Coaching</title>
 
     <style>
-        /* --- GLOBAL STYLES --- */
         body {
             margin: 0;
             padding: 0;
-            font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
             background-color: #111;
             color: #f5f5f5;
+            font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            position: relative;
-        }
-
-        /* Subtle vignette */
-        body:before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
-            z-index: -1;
-        }
-
-        h1, h2 {
-            font-weight: 600;
-            letter-spacing: 0.5px;
         }
 
         .container {
-            max-width: 1050px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 48px 20px;
         }
 
-        /* --- HEADER --- */
         .header {
             text-align: center;
             padding: 60px 20px 40px;
@@ -50,7 +29,7 @@
         .header img {
             width: 210px;
             border-radius: 6px;
-            border: 2px solid #222; /* darker & sharper */
+            border: 1px solid #333;
             display: block;
             margin: 0 auto 28px;
         }
@@ -58,6 +37,7 @@
         .header h1 {
             margin: 0 0 12px;
             font-size: 42px;
+            font-weight: 600;
         }
 
         .header p {
@@ -67,7 +47,16 @@
             color: #cfcfcf;
         }
 
-        /* --- BUTTONS --- */
+        .section {
+            margin: 60px 0;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
         .btn {
             display: inline-block;
             margin: 12px 8px;
@@ -77,24 +66,14 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
             transition: 0.2s ease;
         }
+
         .btn:hover {
             background-color: #fff;
         }
 
-        /* --- SECTIONS --- */
-        .section {
-            margin: 60px 0;
-        }
-
-        .section h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        /* --- EMAIL SIGNUP --- */
         .email-box {
             margin-top: 28px;
             max-width: 420px;
@@ -107,7 +86,7 @@
             border: 1px solid #333;
             background-color: #1a1a1a;
             color: #fff;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         input[type="submit"] {
@@ -124,18 +103,13 @@
             background-color: #fff;
         }
 
-        /* --- FOOTER --- */
-        .footer {
-            width: 100%;
-            background-color: #0d0d0d;
-            border-top: 1px solid #222;
-            padding: 32px 0;
+        footer {
+            padding: 50px 0;
             text-align: center;
             font-size: 14px;
             color: #777;
-            letter-spacing: 0.5px;
-            margin-top: 90px;
         }
+
     </style>
 </head>
 
@@ -143,6 +117,7 @@
 
     <!-- HEADER -->
     <div class="header">
+        <!-- Replace "your-image.jpg" with the actual filename in your repo -->
         <img src="your-image.jpg" alt="Avery Fisk">
         <h1>Avery Fisk Coaching</h1>
         <p>I help driven individuals operate at a higher standard and achieve fast, high-quality results through disciplined execution.</p>
@@ -150,14 +125,13 @@
 
     <div class="container">
 
-        <!-- START HERE SECTION -->
+        <!-- START HERE -->
         <div class="section">
             <h2>Start Here</h2>
 
             <a href="YOUR-CONSULTATION-LINK" class="btn">Book a Consultation Call</a>
             <a href="YOUR-FREE-GUIDE.pdf" class="btn">Download Free Workout Guide</a>
 
-            <!-- Email List Form -->
             <div class="email-box">
                 <form action="/.netlify/functions/subscribe" method="POST">
                     <input type="email" name="email" placeholder="Join the email list" required>
@@ -169,16 +143,13 @@
         <!-- MORE RESOURCES -->
         <div class="section">
             <h2>More Resources</h2>
-
             <a href="YOUR-1ON1-APPLICATION" class="btn">Apply for 1:1 Coaching</a>
-
         </div>
 
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p>© 2025 Avery Fisk Coaching. All Rights Reserved.</p>
+    <footer>
+        © 2025 Avery Fisk Coaching. All Rights Reserved.
     </footer>
 
 </body>
