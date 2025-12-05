@@ -6,7 +6,7 @@
 <title>Avery Fisk Coaching</title>
 
 <!-- FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
     body { 
@@ -15,7 +15,19 @@
         background: #000; 
         color: #fff; 
         text-align: center; 
-        padding: 40px 20px 70px; 
+        padding: 45px 22px 80px; 
+    }
+
+    /* Fade-Up Animation */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .profile-img { 
@@ -23,34 +35,34 @@
         height: 150px; 
         object-fit: cover; 
         border-radius: 50%; 
-        border: 1px solid #222; 
+        border: 1px solid #1a1a1a; 
         margin-bottom: 28px; 
-        filter: contrast(110%); 
+        filter: contrast(112%); 
     }
 
     h1 { 
-        font-size: 28px; 
+        font-size: 34px; /* larger title */
         margin-bottom: 12px; 
-        letter-spacing: 0.5px; 
+        letter-spacing: 0.6px; 
         font-weight: 700; 
     }
 
     .desc { 
-        max-width: 450px; 
-        margin: 0 auto 45px auto; 
+        max-width: 460px; 
+        margin: 0 auto 50px auto; 
         font-size: 15px; 
-        line-height: 1.65; 
+        line-height: 1.7; 
         color: #cfcfcf; 
         font-weight: 400; 
     }
 
     .section-title {
-        margin-top: 50px;
-        margin-bottom: 14px;
-        font-size: 17px;
+        margin-top: 60px;
+        margin-bottom: 16px;
+        font-size: 16px;
         font-weight: 700;
-        color: #eaeaea;
-        letter-spacing: 0.6px;
+        color: #e4e4e4;
+        letter-spacing: 1px;
         text-transform: uppercase;
     }
 
@@ -63,7 +75,7 @@
         width: 85%; 
         max-width: 430px; 
         border-radius: 10px; 
-        border: 1px solid #333; 
+        border: 1px solid #2e2e2e; 
         text-decoration: none; 
         font-size: 16px; 
         font-weight: 600; 
@@ -74,10 +86,11 @@
         background: #fff; 
         color: #000; 
         border-color: #fff; 
+        transform: translateY(-2px);
     }
 
     .email-box { 
-        margin-top: 55px; 
+        margin-top: 65px; 
         max-width: 420px; 
         margin-left: auto; 
         margin-right: auto; 
@@ -118,49 +131,61 @@
     .email-submit:hover { 
         background: #ccc; 
     }
+
+    /* Minimal Footer */
+    footer {
+        width: 100%;
+        text-align: center;
+        margin-top: 70px;
+        padding: 24px 0;
+        font-size: 13px;
+        color: #767676;
+        border-top: 1px solid #1a1a1a;
+        letter-spacing: 0.4px;
+    }
 </style>
 </head>
 
 <body>
 
 <img src="https://images.squarespace-cdn.com/content/v1/6932408d796db753ddcba68d/b6344938-7df6-4ec8-91a9-3d2287a23e63/584389590_18114555436604251_6154592210605558267_n.jpg?format=500w" 
-     class="profile-img"/>
+     class="profile-img fade-up"/>
 
-<h1>Avery Fisk Coaching</h1>
+<h1 class="fade-up">Avery Fisk Coaching</h1>
 
-<div class="desc">
+<div class="desc fade-up">
     High-performance fitness coaching for people who demand real results.  
     Build a physique that stands out, elevate your discipline, and follow a system engineered for fast, measurable transformation.
 </div>
 
 <!-- START HERE -->
-<div class="section-title">Start Here</div>
+<div class="section-title fade-up">Start Here</div>
 
-<a class="link-btn" href="https://calendly.com/averyfisk" target="_blank">
+<a class="link-btn fade-up" href="https://calendly.com/averyfisk" target="_blank">
     Book a Consultation Call
 </a>
 
-<a class="link-btn" href="AveryFisk-FreeWorkout.pdf" target="_blank">
+<a class="link-btn fade-up" href="AveryFisk-FreeWorkout.pdf" target="_blank">
     Download Free Workout Guide
 </a>
 
 <!-- MORE RESOURCES -->
-<div class="section-title">More Resources</div>
+<div class="section-title fade-up">More Resources</div>
 
-<a class="link-btn" href="https://book.stripe.com/14A9AT747feegp1cmK5sA02" target="_blank">
+<a class="link-btn fade-up" href="https://book.stripe.com/14A9AT747feegp1cmK5sA02" target="_blank">
     Apply for 1:1 Coaching
 </a>
 
-<a class="link-btn" href="https://instagram.com/averyfisk" target="_blank">
+<a class="link-btn fade-up" href="https://instagram.com/averyfisk" target="_blank">
     Instagram
 </a>
 
-<a class="link-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
+<a class="link-btn fade-up" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
     Get My Recommendation
 </a>
 
 <!-- EMAIL LIST -->
-<div class="email-box">
+<div class="email-box fade-up">
     <form name="emailCapture" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="emailCapture">
 
@@ -170,6 +195,23 @@
         <button class="email-submit" type="submit">Join</button>
     </form>
 </div>
+
+<footer>
+    © Avery Fisk Coaching. All Rights Reserved.
+</footer>
+
+<!-- Observer Script -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
