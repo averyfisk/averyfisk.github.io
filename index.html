@@ -18,12 +18,14 @@
         padding: 40px 20px 70px 20px; 
     }
 
+    /* ANIMATION BASE STATE */
     .fade-up {
         opacity: 0;
         transform: translateY(25px);
         transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
+    /* WHEN ELEMENT ENTERS VIEW */
     .fade-up.show {
         opacity: 1;
         transform: translateY(0);
@@ -128,13 +130,12 @@
         background: #ccc; 
     }
 
-    /* Success message */
-    #successMessage {
-        display: none;
-        margin-top: 20px;
-        font-size: 15px;
-        color: #4CAF50;
+    /* small inline status */
+    #formMessage {
+        margin-top: 10px;
+        color: #ccc;
         font-weight: 600;
+        display: none;
         text-align: center;
     }
 </style>
@@ -142,6 +143,7 @@
 
 <body>
 
+<!-- Animation wrappers -->
 <img src="https://images.squarespace-cdn.com/content/v1/6932408d796db753ddcba68d/b6344938-7df6-4ec8-91a9-3d2287a23e63/584389590_18114555436604251_6154592210605558267_n.jpg?format=500w" 
      class="profile-img fade-up"/>
 
@@ -167,38 +169,118 @@
 </a>
 
 <div class="email-box fade-up">
-    <label for="email">Join my email list for training strategies, physique tips, and exclusive coaching offers:</label>
+    <!-- PRESERVED HIDDEN FIELDS FOR COMPATIBILITY (keeps original intent) -->
+    <form id="emailForm" name="emailForm" netlify netlify-honeypot="bot-field" data-netlify="true">
+        <input type="hidden" name="form-name" value="emailForm">
+        <input type="hidden" name="bot-field" id="bot-field">
 
-    <input class="email-input" type="email" id="emailInput" placeholder="Enter your email..." required>
+        <label for="email">Join my email list for training strategies, physique tips, and exclusive coaching offers:</label>
+        <input class="email-input" type="email" name="email" id="email" placeholder="Enter your email..." required>
 
-    <button class="email-submit" onclick="subscribe()">Join</button>
+        <button class="email-submit" type="submit">Join</button>
 
-    <div id="successMessage">You're in. Check your email.</div>
+        <!-- inline status message (small, unobtrusive) -->
+        <div id="formMessage"></div>
+    </form>
 </div>
 
+<!-- SMOOTH SCROLL + OBSERVER SCRIPT -->
 <script>
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('show');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
         });
     }, { threshold: 0.2 });
+
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
-    async function subscribe() {
-        const email = document.getElementById('emailInput').value.trim();
-        if (!email) return;
+<!-- Netlify + MailerLite integration script -->
+<script>
+/*
+  Behavior:
+  - Submits the Netlify form (so Netlify Forms records the submission)
+  - Calls your Netlify serverless function '/.netlify/functions/subscription'
+    which performs the secure MailerLite API call (server-side).
+  - Shows a brief success or error message in the small inline status area.
+  Requirements:
+  - Deploy a Netlify function at /.netlify/functions/subscription that reads
+    event.body.email and posts to MailerLite using MAILERLITE_API_KEY (env var).
+*/
 
-        const response = await fetch('/.netlify/functions/subscription', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email })
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('emailForm');
+    const emailInput = document.getElementById('email');
+    const formMessage = document.getElementById('formMessage');
+    const botField = document.getElementById('bot-field');
 
-        if (response.ok) {
-            document.getElementById('successMessage').style.display = 'block';
-            document.getElementById('emailInput').value = '';
-        }
+    function showMessage(text, color) {
+        formMessage.style.display = 'block';
+        formMessage.style.color = color || '#ccc';
+        formMessage.textContent = text;
     }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // basic validation
+        const email = emailInput.value && emailInput.value.trim();
+        if (!email) {
+            showMessage('Enter a valid email.', '#ff6b6b');
+            return;
+        }
+
+        // prevent bot-field being filled
+        if (botField && botField.value) {
+            // silently ignore bots
+            return;
+        }
+
+        // show immediate UI feedback
+        showMessage('Submitting...', '#aaaaaa');
+
+        try {
+            // 1) Let Netlify record the form (fire-and-forget)
+            // Build form data identical to a regular POST
+            const formData = new FormData();
+            formData.append('form-name', 'emailForm');
+            formData.append('email', email);
+
+            // Send to Netlify (so it's visible in Netlify Forms)
+            fetch('/', {
+                method: 'POST',
+                body: formData
+            }).catch(err => {
+                // ignore Netlify errors client-side — main work is serverless function
+                console.warn('Netlify form submit failed (client)', err);
+            });
+
+            // 2) Call the Netlify serverless function (server does MailerLite call)
+            const resp = await fetch('/.netlify/functions/subscription', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+
+            if (!resp.ok) {
+                const text = await resp.text();
+                console.error('Server subscription error', resp.status, text);
+                showMessage('Subscription failed. Try again later.', '#ff6b6b');
+                return;
+            }
+
+            // success
+            showMessage('You’re in — check your inbox for your guide.', '#7CFC00');
+            emailInput.value = '';
+
+        } catch (err) {
+            console.error(err);
+            showMessage('Network error — try again.', '#ff6b6b');
+        }
+    });
+});
 </script>
 
 </body>
