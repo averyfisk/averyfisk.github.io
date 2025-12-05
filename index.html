@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Avery Fisk Coaching</title>
 
-<!-- INTER FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- PROFESSIONAL FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
     body { 
         margin: 0; 
-        font-family: 'Inter', sans-serif; 
-        background: #000; 
+        font-family: 'Inter Tight', sans-serif; 
+        /* Sharper, professional gradient */
+        background: linear-gradient(160deg, #000000 0%, #0a0a0a 40%, #111 100%);
         color: #fff; 
         text-align: center; 
         padding: 40px 20px 70px 20px; 
@@ -34,14 +35,15 @@
         height: 150px; 
         object-fit: cover; 
         border-radius: 100%; 
-        border: 2px solid #444; 
+        /* thinner, darker, more premium border */
+        border: 1.2px solid #222; 
         margin-bottom: 28px; 
     }
 
     h1 { 
         font-size: 26px; 
         margin-bottom: 12px; 
-        letter-spacing: 1px; 
+        letter-spacing: .6px; 
         font-weight: 700; 
     }
 
@@ -50,13 +52,13 @@
         margin: 0 auto 40px auto; 
         font-size: 15px; 
         line-height: 1.55; 
-        color: #ccc; 
+        color: #d0d0d0; 
         font-weight: 400; 
     }
 
     .link-btn { 
         display: block; 
-        background: #111; 
+        background: #0d0d0d; 
         color: #fff; 
         padding: 16px; 
         margin: 18px auto; 
@@ -71,8 +73,8 @@
     }
 
     .link-btn:hover { 
-        background: #fff; 
-        color: #000; 
+        background: #ffffff; 
+        color: #000000; 
         border-color: #fff; 
     }
 
@@ -95,7 +97,7 @@
 
     .email-box label { 
         font-size: 15px; 
-        color: #aaa; 
+        color: #bbb; 
         font-weight: 600; 
     }
 
@@ -106,7 +108,7 @@
         margin-bottom: 18px; 
         border-radius: 8px; 
         border: none; 
-        background: #222; 
+        background: #1d1d1d; 
         color: #fff; 
         font-size: 15px; 
     }
@@ -125,7 +127,7 @@
     }
 
     .email-submit:hover { 
-        background: #ccc; 
+        background: #e4e4e4; 
     }
 
     #formMessage {
@@ -160,9 +162,7 @@
     Not sure where to start? Get my personal recommendation based on your goals.
 </div>
 
-<a class="link-btn fade-up" 
-   href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" 
-   target="_blank">
+<a class="link-btn fade-up" href="https://docs.google.com/forms/d/e/1FAIpQLSe7lghPQfBve8SpCIYZTUmAY7NMFb42nxt3Yd8JvbkNkPcplA/viewform?usp=dialog" target="_blank">
     Get My Recommendation
 </a>
 
@@ -192,6 +192,7 @@
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
+<!-- Netlify + MailerLite -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('emailForm');
@@ -214,7 +215,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        if (botField && botField.value) return;
+        if (botField && botField.value) {
+            return;
+        }
 
         showMessage('Submitting...', '#aaaaaa');
 
@@ -223,10 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('form-name', 'emailForm');
             formData.append('email', email);
 
-            fetch('/', {
-                method: 'POST',
-                body: formData
-            }).catch(() => {});
+            fetch('/', { method: 'POST', body: formData }).catch(() => {});
 
             const resp = await fetch('/.netlify/functions/subscription', {
                 method: 'POST',
